@@ -1,2 +1,53 @@
-<app-server></app-server>
-<app-server></app-server>
+<label>Server Name</label>
+<!--<input type="text" class="form-control" (input)="onUpdateServerName($event)">-->
+<input type="text" class="form-control" [(ngModel)]="serverName">
+<p>{{serverName}}</p>
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click)="onCreateServer()">Add Server</button>
+<!--<p>{{serverCreationStatus}}</p>-->
+<p *ngIf="serverCreated; else noServer">{{serverCreationStatus}}</p>
+<ng-template #noServer><p>No server was created!</p></ng-template>
+<!--<p [innerText]="allowNewServer"></p>-->
+<!--<app-server></app-server>-->
+<!--<app-server></app-server>-->
+
+<!--<ol>
+  <li>Add a Input field which updates a property ('username') via Two-Way-Binding</li>
+  <li>Output the username property via String Interpolation (in a paragraph below the input)</li>
+  <li>Add a button which may only be clicked if the username is NOT an empty string</li>
+  <li>Upon clicking the button, the username should be reset to an empty string</li>
+</ol>-->
+<!--<input type="text" class="form-control" [(ngModel)]="userName" (input)="onUpdateUserName($event)">
+<p>{{userName}}</p>
+<button class="btn btn-warning" [disabled]="resetUserName" (click)="clearUserName()">Reset User Name</button>-->
+
+<!--<app-server></app-server>-->
+<app-server *ngFor="let server of servers"></app-server>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <li>Add A button which says 'Display Details'</li>
+        <li>Add a paragraph with any content of your choice (e.g. 'Secret Password = tuna')</li>
+        <li>Toggle the displaying of that paragraph with the button created in the first step</li>
+        <li>Log all button clicks in an array and output that array below the secret paragraph (maybe log a timestamp or simply an incrementing number)</li>
+        <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <button class="btn btn-primary" (click)="toggleParagraphDisplay()" >Display Details</button>
+        <p [ngStyle]="{display:getDisplayProperty()}">Sample Paragraph added as per assignment</p>
+        <p [ngStyle]="{backgroundColor: getColor(i)}"
+           [ngClass]="{online: i > 3}"
+           *ngFor="let paragraph of paragraphLog; let i = index">{{paragraph}}</p>
+        <li>Starting at the 5th log item, give all future log items a blue background (via ngStyle) and white color (ngClass)</li>
+      </ol>
+    </div>
+  </div>
+</div>
